@@ -18,7 +18,7 @@ See [jQuery Ajax configuration](http://api.jquery.com/jQuery.ajax/)
 ## Example
 ```javascript
 $.cors({
-	'url': 'https://api.mercadolibre.com/sites/MLA/search?query=ps3',
+	'url': 'http://api.site.com/search?query=ps3',
 	'success': function (data) {
 		// Code here!
 	},
@@ -29,7 +29,7 @@ $.cors({
 
 // or
 
-$.cors('https://api.mercadolibre.com/sites/MLA/search?query=ps3', function (data) {
+$.cors('http://api.site.com/search?query=ps3', function (data) {
 	// Code here!
 });
 ```
