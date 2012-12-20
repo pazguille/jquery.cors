@@ -1,41 +1,41 @@
 (function (window) {
-	'use strict';
+    'use strict';
 
-	var $ = window.jQuery,
-		supportCORS = (function () {
-			var xhr;
-			if (window.XMLHttpRequest) {
-				xhr = new window.XMLHttpRequest();
-				return (xhr.hasOwnProperty && xhr.hasOwnProperty('withCredentials'));
-			}
-		}()),
-		dataType = (supportCORS) ? 'json' : 'jsonp';
+    var $ = window.jQuery,
+        supportCORS = (function () {
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new window.XMLHttpRequest();
+                return (xhr.hasOwnProperty && xhr.hasOwnProperty('withCredentials'));
+            }
+        }()),
+        dataType = supportCORS ? 'json' : 'jsonp';
 
-	$.cors = function (url, fn) {
+    $.cors = function (url, fn) {
 
-		if (url === undefined) {
-			throw new Error('$.cors: url must be defined');
-		}
+        if (url === undefined) {
+            throw new Error('$.cors: url must be defined');
+        }
 
-		var options = {
-			'type': 'GET',
-			'dataType': dataType
-		};
+        var options = {
+            'type': 'GET',
+            'dataType': dataType
+        };
 
-		if (typeof fn === 'function') {
-			options.success = fn;
-		}
+        if (typeof fn === 'function') {
+            options.success = fn;
+        }
 
-		if (typeof url === 'string') {
-			options.url = url;
+        if (typeof url === 'string') {
+            options.url = url;
 
-		} else if (typeof url === 'object') {
-			$.extend(options, url);
-		}
+        } else if (typeof url === 'object') {
+            $.extend(options, url);
+        }
 
-		$.ajax(options);
+        $.ajax(options);
 
-		return this;
-	};
+        return this;
+    };
 
 }(this));
